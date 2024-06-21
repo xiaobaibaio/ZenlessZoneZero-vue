@@ -1,14 +1,22 @@
 <template>
   <!-- 固定在页面右侧的导航栏 -->
   <div class="affix fill">
-    <el-affix :offset="240" style="width: 54px; height: 238px">
+    <el-affix :offset="240"
+              style="width: 54px; height: 238px">
       <div class="affix_div">
         <!-- 上下按钮 -->
-        <div class="affix_div_up affix_div_but fill" @click="affixRight"></div>
-        <div class="affix_div_below affix_div_but fill" @click="affixLeft"></div>
+        <div class="affix_div_up affix_div_but fill"
+             @click="affixTop(),but()"
+             :class="{imgUrlBut:imgUrlButTop }"></div>
+        <div class="affix_div_below affix_div_but fill"
+             @click="affixBottom(),but()"
+             :class="{imgUrlBut:imgUrlButBottom}"></div>
         <!-- 锚点导航 -->
-        <el-anchor class="fill" :marker="false">
-          <div class="affix_anchor" v-for="item in introduceList" :key="item.id">
+        <el-anchor class="fill"
+                   :marker="false">
+          <div class="affix_anchor"
+               v-for="item in introduceList"
+               :key="item.id">
             {{ item.serial }}
           </div>
         </el-anchor>
@@ -33,43 +41,59 @@ const introduceListLength = ref(props.introduceList.length)
 const affixId = ref(1)
 const itemId = ref()
 
-const animationLeft = (id) => {
+
+const imgUrlButTop = ref(false)
+const imgUrlButBottom = ref(true)
+
+const animationTop = (id) => {
   gsap.to('.affix_anchor', {
     y: -itemId.value * id
   })
 }
 
-const animationRight = (id) => {
+const animationBottom = (id) => {
   gsap.to('.affix_anchor', {
-    y: itemId.value * id
+    y: -itemId.value * id
   })
-  console.log(itemId.value * id)
 }
 
-const affixRight = () => {
+const affixTop = () => {
   if (1 < affixId.value) {
-    animationRight(affixId.value++)
+    animationTop(affixId.value-- - 2)
   } else {
     console.log(111)
   }
 }
 
-const affixLeft = () => {
+const affixBottom = () => {
   if (affixId.value < introduceListLength.value) {
-    animationLeft(affixId.value++)
+    animationBottom(affixId.value++)
   } else {
     console.log(111)
+  }
+}
+
+// 进行判断若id > 1 时向上按钮为true反之为false
+// 进行判断id === 数组长度 时向上按钮为false反之为true
+const but = () => {
+  if (Number(affixId.value) === Number(introduceListLength.value)) {
+    imgUrlButBottom.value = false
+  } else if (affixId.value > 1) {
+    imgUrlButTop.value = true
+    imgUrlButBottom.value = true
+  } else {
+    imgUrlButTop.value = false
   }
 }
 onMounted(() => {
+  animationTop(), animationBottom()
   const body = document.body
   const bodyStyles = window.getComputedStyle(body)
   itemId.value = parseFloat(bodyStyles.fontSize) * 2
   console.log(itemId.value)
-  console.log(bodyStyles.fontSize)
   height.value = document.body.scrollHeight
-  console.log(height.value)
-  console.log(introduceListLength.value)
+  // nextTick(() => {
+  // })
 })
 </script>
 
@@ -92,6 +116,9 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .imgUrlBut {
+      background-image: url('../../../assets/固钉/下载 (5).png') !important;
+    }
     .affix_anchor {
       margin-top: 1.15rem;
       margin-left: -0.2rem;
@@ -107,13 +134,12 @@ onMounted(() => {
       background-repeat: no-repeat;
       margin: 0.1rem 0;
       z-index: 11111;
+      background-image: url('../../../assets/固钉/下载 (4).png');
     }
     .affix_div_up {
-      background-image: url('../../../assets/固钉/下载 (4).png');
     }
     .affix_div_below {
       top: 2rem;
-      background-image: url('../../../assets/固钉/下载 (5).png');
       transform: rotate(180deg);
     }
   }

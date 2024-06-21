@@ -130,7 +130,6 @@ onMounted(() => {
       // 确保 ref 引用的 DOM 元素存在后再访问其属性
       width.value = jiurnalism_swiper.value[0].offsetWidth
       textAnimation()
-      console.log(jiurnalism_swiper.value[0].offsetWidth)
     } else {
       console.error('jiurnalism_swiper.value[0] is undefined')
     }

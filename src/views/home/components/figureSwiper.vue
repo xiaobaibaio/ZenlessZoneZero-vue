@@ -380,7 +380,6 @@ onMounted(() => {
       if (chome_character__main__ol.value[1]) {
         // 确保 ref 引用的 DOM 元素存在后再访问其属性
         width.value = chome_character__main__ol.value[1].offsetWidth
-        console.log(chome_character__main__ol.value[1].offsetWidth)
       } else {
         console.error('chome_character__main__ol.value[1] is undefined')
       }

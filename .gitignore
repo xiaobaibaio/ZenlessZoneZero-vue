@@ -1,4 +1,6 @@
 # Logs
+.vscode
+.idea
 logs
 *.log
 npm-debug.log*
