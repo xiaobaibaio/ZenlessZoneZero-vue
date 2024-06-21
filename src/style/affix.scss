@@ -1,0 +1,11 @@
+// 导入 Element Plus 样式变量
+@import '~element-plus/theme-chalk/src/common/var.scss';
+
+// 覆盖 Element Plus 的样式变量
+$--el-anchor-bg-color: #f0f0f0;
+$--el-anchor-padding-indent: 16px;
+$--el-anchor-line-height: 24px;
+$--el-anchor-font-size: 14px;
+$--el-anchor-color: #333;
+$--el-anchor-active-color: #42b983;
+$--el-anchor-marker-bg-color: #42b983;
