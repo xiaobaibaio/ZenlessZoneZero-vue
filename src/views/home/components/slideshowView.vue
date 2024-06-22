@@ -1,19 +1,16 @@
 <template>
   <div class="fill_character fill">
-    <img
-      class="fill_character_packaging fill"
-      src="../../../assets/人物/边/fill-bar.e05cd19.png"
-      alt=""
-    />
-    <img
-      class="fill_character_black"
-      src="../../../assets/人物/边/fill-black-right.53dad41.png"
-      alt=""
-    />
+    <img class="fill_character_packaging fill"
+         src="../../../assets/人物/边/fill-bar.e05cd19.png"
+         alt="" />
+    <img class="fill_character_black"
+         src="../../../assets/人物/边/fill-black-right.53dad41.png"
+         alt="" />
   </div>
 
   <div class="fill_background fill">
-    <img src="../../../assets/人物/边/fill-black-short.af5371b.png" alt="" />
+    <img src="../../../assets/人物/边/fill-black-short.af5371b.png"
+         alt="" />
   </div>
   <div class="fill_introduce fill">
     <slot name="introduce"></slot>
@@ -58,7 +55,7 @@
   width: 8.45rem;
   height: 11rem;
   background-color: rgb(216, 250, 0);
-  z-index: 1;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: flex-end;

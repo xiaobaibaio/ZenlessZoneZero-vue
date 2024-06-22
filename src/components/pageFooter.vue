@@ -2,8 +2,11 @@
   <div class="footer fiee">
     <div class="footer_wrap">
       <ul class="img_ul">
-        <li v-for="item in followUs" :key="item.id">
-          <a href="" @mouseenter="hoveredId = item.id" @mouseleave="hoveredId = null">
+        <li v-for="item in followUs"
+            :key="item.id">
+          <a href=""
+             @mouseenter="hoveredId = item.id"
+             @mouseleave="hoveredId = null">
             <img :src="hoveredId === item.id ? item.img : item.imgs" />
           </a>
         </li>
@@ -13,21 +16,18 @@
       <div class="cn_footer">
         <div class="footer_content">
           <div class="footer_logo">
-            <img
-              src="/src/assets/尾/f7dcd7ce5ff481132db0e8e5588ea41c_1058604956605839480.png"
-              alt=""
-            />
+            <img src="/src/assets/尾/f7dcd7ce5ff481132db0e8e5588ea41c_1058604956605839480.png"
+                 alt="" />
             <span></span>
-            <img
-              class="game-logo"
-              src="/src/assets/尾/af9fd2ec764d0af9c63b9762e6b32ef0_77819233022176362.png"
-              alt=""
-            />
+            <img class="game-logo"
+                 src="/src/assets/尾/af9fd2ec764d0af9c63b9762e6b32ef0_77819233022176362.png"
+                 alt="" />
           </div>
           <div class="footer-info">
             <div class="footer-link">
               <ul>
-                <li v-for="item in agreementList" :key="item.id">
+                <li v-for="item in agreementList"
+                    :key="item.id">
                   <a href="">{{ item.name }}</a>
                 </li>
               </ul>
@@ -60,8 +60,10 @@
               <span class="line_between">客服电话：400-666-6312</span>
             </div>
             <div class="footer-icon">
-              <div v-for="item in footerIconList" :key="item.id">
-                <a href=""><img :src="item.img" alt="" /></a>
+              <div v-for="item in footerIconList"
+                   :key="item.id">
+                <a href=""><img :src="item.img"
+                       alt="" /></a>
               </div>
             </div>
           </div>
@@ -72,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 const followUs = ref([
   { id: 1, img: '/src/assets/视频号/wx.png', imgs: '/src/assets/视频号/wx-1.png' },
   { id: 2, img: '/src/assets/视频号/wbo.png', imgs: '/src/assets/视频号/wbo-1.png' },
@@ -204,8 +206,8 @@ const hoveredId = ref(null)
           display: flex;
           padding: 10px 0;
           img {
-            width: 116px;
-            height: 46px;
+            width: 80px;
+            height: 30px;
             margin-right: 15px;
           }
         }

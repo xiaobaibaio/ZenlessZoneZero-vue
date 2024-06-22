@@ -2,7 +2,7 @@
   <!-- 固定在页面右侧的导航栏 -->
   <div class="affix fill">
     <el-affix :offset="240"
-              style="width: 54px; height: 238px">
+              style="width: 54px; height: 200px">
       <div class="affix_div">
         <!-- 上下按钮 -->
         <div class="affix_div_up affix_div_but fill"
@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, onMounted } from 'vue'
+import { ref, defineProps, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 
 // 接收 introduceList 作为 props
@@ -36,42 +36,39 @@ const props = defineProps({
     required: true
   }
 })
-let height = ref(0)
+
 const introduceListLength = ref(props.introduceList.length)
 const affixId = ref(1)
-const itemId = ref()
+const itemId = ref(130)
 
-
-const imgUrlButTop = ref(false)
-const imgUrlButBottom = ref(true)
-
-const animationTop = (id) => {
+//动画点击
+const animation = (id) => {
   gsap.to('.affix_anchor', {
-    y: -itemId.value * id
+    y: -itemId.value * id,
+    ease: 'power2.out'
   })
 }
 
-const animationBottom = (id) => {
-  gsap.to('.affix_anchor', {
-    y: -itemId.value * id
-  })
-}
-
+//上下点击函数
 const affixTop = () => {
   if (1 < affixId.value) {
-    animationTop(affixId.value-- - 2)
-  } else {
-    console.log(111)
+    animation(affixId.value - 2)
+    affixId.value--
+    scrollTopY(affixId.value)
   }
 }
 
 const affixBottom = () => {
   if (affixId.value < introduceListLength.value) {
-    animationBottom(affixId.value++)
-  } else {
-    console.log(111)
+    animation(affixId.value)
+    affixId.value++
+    scrollTopY(affixId.value)
   }
 }
+
+//判断是否为第一个或者最后一个
+const imgUrlButTop = ref(false)
+const imgUrlButBottom = ref(true)
 
 // 进行判断若id > 1 时向上按钮为true反之为false
 // 进行判断id === 数组长度 时向上按钮为false反之为true
@@ -85,25 +82,57 @@ const but = () => {
     imgUrlButTop.value = false
   }
 }
+
+let height = ref(0)
+const scrollPositions = [0, 970, 1900, 2700, 3500]
+const scrollTopY = (id) => {
+  if (id >= 1 && id <= scrollPositions.length) {
+    window.scrollTo(0, scrollPositions[id - 1])
+  }
+}
+
+import { useScroll } from "@/utils/useScroll.js"
+// import { throttle } from '@/utils/throttle.js' // 导入节流工具
+import { debounce } from '@/utils/debounce.js'
+
+const { scrollY } = useScroll()
+
+// 处理滚动事件的函数
+const handleScroll = () => {
+  const Y = scrollY.value;
+  // 根据当前滚动位置 scrollY 更新 affixId 的值
+  affixId.value = Y >= 2900 ? 5 :
+    Y >= 2100 ? 4 :
+      Y >= 1300 ? 3 :
+        Y >= 370 ? 2 : 1;
+  // 执行对应的动画
+  animation(affixId.value - 1);
+  but()
+};
+
+// 防抖
+const debouncedHandleScroll = debounce(handleScroll, 200);
+
+// 监听
 onMounted(() => {
-  animationTop(), animationBottom()
-  const body = document.body
-  const bodyStyles = window.getComputedStyle(body)
-  itemId.value = parseFloat(bodyStyles.fontSize) * 2
-  console.log(itemId.value)
+  animation()
   height.value = document.body.scrollHeight
-  // nextTick(() => {
-  // })
-})
+  console.log(height.value);
+  window.addEventListener('scroll', debouncedHandleScroll);
+});
+
+// 移除监听
+onUnmounted(() => {
+  window.removeEventListener('scroll', debouncedHandleScroll);
+});
 </script>
 
 <style lang="scss" scoped>
 .affix {
-  width: 100vw;
-  height: 238px;
   z-index: 10000;
   display: flex;
   justify-content: flex-end;
+  right: 0;
   .affix_div {
     background-color: #000;
     width: 100%;
@@ -118,14 +147,16 @@ onMounted(() => {
     align-items: center;
     .imgUrlBut {
       background-image: url('../../../assets/固钉/下载 (5).png') !important;
+      cursor: pointer;
     }
     .affix_anchor {
       margin-top: 1.15rem;
       margin-left: -0.2rem;
       transform: rotate(90deg);
       color: #d8fa00;
-      font-size: 0.6rem;
+      font-size: 38px;
       font-weight: bold;
+      cursor: default;
     }
     .affix_div_but {
       width: 24px;
@@ -135,8 +166,6 @@ onMounted(() => {
       margin: 0.1rem 0;
       z-index: 11111;
       background-image: url('../../../assets/固钉/下载 (4).png');
-    }
-    .affix_div_up {
     }
     .affix_div_below {
       top: 2rem;

@@ -1,19 +1,27 @@
 <template>
   <div class="home">
     <!-- 导航栏 -->
-    <div><navView></navView></div>
+    <div>
+      <navView></navView>
+    </div>
     <div>
       <!-- 固钉 -->
-      <section class="fill" style="z-index: 1111111">
+      <section class="fill"
+               style="z-index: 1111111">
         <Affix :introduceList="introduceList" />
       </section>
       <!-- 主体banner -->
-      <section class="home-section" id="affix-1"><Section></Section></section>
+      <section class="home-section"
+               id="affix-1">
+        <Section></Section>
+      </section>
       <!-- 人物列表 -->
-      <section class="home-character" id="affix-2">
+      <section class="home-character"
+               id="affix-2">
         <slideshow>
           <template v-slot:introduce>
-            <introduceView :introduceList="introduceList" :id="2"></introduceView>
+            <introduceView :introduceList="introduceList"
+                           :id="2"></introduceView>
           </template>
           <template v-slot:moreBut>
             <moreBut></moreBut>
@@ -24,10 +32,12 @@
         </slideshow>
       </section>
       <!-- 新闻列表 -->
-      <section class="newsInformation Zindex" id="affix-3">
+      <section class="newsInformation Zindex"
+               id="affix-3">
         <newsInformation>
           <template v-slot:introduce>
-            <introduceView :introduceList="introduceList" :id="3"></introduceView>
+            <introduceView :introduceList="introduceList"
+                           :id="3"></introduceView>
           </template>
           <template v-slot:journalismSwiper>
             <journalismSwiper></journalismSwiper>
@@ -35,10 +45,12 @@
         </newsInformation>
       </section>
       <!-- 游戏特色 -->
-      <section class="home-character absolute_top" id="affix-4">
+      <section class="home-character absolute_top"
+               id="affix-4">
         <slideshow class="absolute_top">
           <template v-slot:introduce>
-            <introduceView :introduceList="introduceList" :id="4"></introduceView>
+            <introduceView :introduceList="introduceList"
+                           :id="4"></introduceView>
           </template>
           <template v-slot:moreBut>
             <featureSwiper></featureSwiper>
@@ -46,10 +58,12 @@
         </slideshow>
       </section>
       <!-- 设定档案 -->
-      <section class="newsInformation absolute_top" id="affix-5">
+      <section class="newsInformation absolute_top"
+               id="affix-5">
         <newsInformation>
           <template v-slot:introduce>
-            <introduceView :introduceList="introduceList" :id="5"></introduceView>
+            <introduceView :introduceList="introduceList"
+                           :id="5"></introduceView>
           </template>
           <template v-slot:recordView>
             <recordView></recordView>
@@ -58,7 +72,9 @@
       </section>
     </div>
     <!-- 页脚 -->
-    <div class="page_footer fiee"><pageFooter></pageFooter></div>
+    <div class="page_footer fiee">
+      <pageFooter></pageFooter>
+    </div>
   </div>
 </template>
 
@@ -120,6 +136,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .home {
   width: 100vw;
+  overflow-block: scroll;
   section {
     position: relative;
   }
