@@ -1,13 +1,17 @@
 <template>
-  <div class="home_feature" ref="home_feature">
+  <div class="home_feature"
+       ref="home_feature">
     <div class="home_feature_swiper">
       <span>
-        <img :src="img" alt="" />
+        <img :src="img"
+             alt="" />
       </span>
     </div>
     <div class="home_feature_but fill">
-      <div class="home_feature_but_left" @click="butLeft()"></div>
-      <div class="home_feature_but_right" @click="butRight()"></div>
+      <div class="home_feature_but_left"
+           @click="butLeft()"></div>
+      <div class="home_feature_but_right"
+           @click="butRight()"></div>
     </div>
     <div class="home_feature_article fill">
       <div class="home_feature_title font-hongmeng">
@@ -19,8 +23,10 @@
     </div>
   </div>
   <div class="home_feature_but_small fill">
-    <div class="home_feature_but_small_left" @click="butLeft()"></div>
-    <div class="home_feature_but_small_right" @click="butRight()"></div>
+    <div class="home_feature_but_small_left"
+         @click="butLeft()"></div>
+    <div class="home_feature_but_small_right"
+         @click="butRight()"></div>
   </div>
 </template>
 
@@ -116,8 +122,6 @@ onMounted(() => {
     div:hover {
       opacity: 1;
     }
-    .home_feature_but_left {
-    }
     .home_feature_but_right {
       transform: rotate(180deg);
     }
@@ -166,6 +170,7 @@ onMounted(() => {
   align-items: center;
   right: 1.2rem;
   top: 8.2rem;
+  cursor: pointer;
   div {
     width: 0.84rem;
     height: 0.6rem;
@@ -175,8 +180,6 @@ onMounted(() => {
   }
   div:hover {
     background-image: url('/src/assets/轮播图2/下载 (11).png');
-  }
-  .home_feature_but_small_left {
   }
   .home_feature_but_small_right {
     transform: rotate(180deg);

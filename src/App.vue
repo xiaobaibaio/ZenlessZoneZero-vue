@@ -4,6 +4,7 @@ import pageFooter from '@/components/pageFooter.vue'
 </script>
 
 <template>
+  <!-- 导航栏 -->
   <div>
     <navView></navView>
   </div>
@@ -16,7 +17,6 @@ import pageFooter from '@/components/pageFooter.vue'
 
 <style scoped lang="scss">
 .page_footer {
-  top: 4.27rem;
   background: #111;
 }
 </style>

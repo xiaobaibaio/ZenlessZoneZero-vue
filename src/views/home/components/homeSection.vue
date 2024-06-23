@@ -1,23 +1,23 @@
 <template>
   <section class="home-section">
-    <div :class="{ fill_transform: fill }" class="fill fill_bg">
-      <img src="../../../assets/banner/fill-bg.c5ecc5f.png" alt="text" />
+    <div :class="{ fill_transform: fill }"
+         class="fill fill_bg fill">
+      <img src="../../../assets/banner/fill-bg.c5ecc5f.png"
+           alt="text" />
     </div>
-    <div :class="{ fill_transform: fill }" class="fill fill_text">
-      <img src="../../../assets/banner/fill-text.b4d7ce4.png" alt="text" />
+    <div :class="{ fill_transform: fill }"
+         class="fill fill_text">
+      <img src="../../../assets/banner/fill-text.b4d7ce4.png"
+           alt="text" />
     </div>
     <div class="banner fill">
       <div class="banner_img_home fill">
-        <img
-          src="../../../assets/banner/37198ce9c5ee13abb2c49f1bd1c3ca97_7702488080246216541.png"
-          alt=""
-        />
+        <img src="../../../assets/banner/37198ce9c5ee13abb2c49f1bd1c3ca97_7702488080246216541.png"
+             alt="" />
         <div class="banner_img_reserve fill">
           <div class="banner_reserve">
-            <img
-              src="../../../assets/banner/d223d9ae5c37bf0f3151108b4f4acf1b_738017132473846163.png"
-              alt=""
-            />
+            <img src="../../../assets/banner/d223d9ae5c37bf0f3151108b4f4acf1b_738017132473846163.png"
+                 alt="" />
             <div class="banner_img_overbook font-hongmeng fill">
               全平台预约人数：<span>{{ overbook }}</span>
             </div>
@@ -26,12 +26,11 @@
         <div class="banner_list_play_video">
           <div class="banner_play_video"></div>
           <div class="banner_age">
-            <img
-              src="../../../assets/banner/fde5edcc28d0a26087a5ee10adbad529_1429746946814537313.png"
-              alt=""
-            />
+            <img src="../../../assets/banner/fde5edcc28d0a26087a5ee10adbad529_1429746946814537313.png"
+                 alt="" />
           </div>
-          <div class="banner_serial"><img src="../../../assets/banner/下载.png" alt="" /></div>
+          <div class="banner_serial"><img src="../../../assets/banner/下载.png"
+                 alt="" /></div>
         </div>
       </div>
     </div>
@@ -49,6 +48,7 @@ const overbook = ref(11121212)
 .fill_bg {
   width: 14.42rem;
   top: 2.32rem;
+  z-index: -1;
 }
 .fill_text {
   width: 1.65rem;

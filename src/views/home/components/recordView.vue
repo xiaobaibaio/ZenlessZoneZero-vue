@@ -1,7 +1,8 @@
 <template>
   <div class="record fill">
     <div class="background_img"></div>
-    <a href="" class="record_a fill">
+    <a href=""
+       class="record_a fill">
       <div class="record_text">
         <div>概念站</div>
         <div class="record_text-title-sub">跳转回顾</div>
@@ -24,7 +25,7 @@ import { ref, onMounted } from 'vue'
 .record {
   width: 6.67rem;
   height: 2.37rem;
-  top: 5.3rem;
+  top: 3rem;
   right: 0;
   z-index: 11;
   .background_img {

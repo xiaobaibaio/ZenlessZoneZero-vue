@@ -1,5 +1,6 @@
 <template>
-  <div v-if="currentIntroduce" class="fill_introduce_list">
+  <div v-if="currentIntroduce"
+       class="fill_introduce_list">
     <div class="fill_introduce_name font-mun">{{ currentIntroduce.name }}</div>
     <div class="fill_introduce_Character font-mun">{{ currentIntroduce.nameEnglish }}</div>
     <div class="fill_introduce_serial font-mun">{{ currentIntroduce.serial }}</div>
@@ -33,7 +34,7 @@ const currentIntroduce = computed(() => {
 .fill_introduce_list {
   width: 5.24rem;
   color: #222122;
-  margin-top: -1rem;
+  margin-top: -2.4rem;
   margin-right: -0.7rem;
   text-transform: uppercase;
   .fill_introduce_name {

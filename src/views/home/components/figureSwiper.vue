@@ -3,41 +3,44 @@
   <div class="chome-character__main__ul fill">
     <!-- 按钮 -->
     <div class="chome-character__main__but fill">
-      <div class="chome-character__main__left fill" @click="butLeft"></div>
-      <div class="chome-character__main__right fill" @click="butRight"></div>
+      <div class="chome-character__main__left fill"
+           @click="butLeft"></div>
+      <div class="chome-character__main__right fill"
+           @click="butRight"></div>
     </div>
     <!-- 人物列表 -->
     <div class="chome-character_ov">
       <div class="chome-character__main__ul ul">
-        <div
-          class="chome-character__main__ol fiee"
-          v-for="item in role"
-          :key="item.id"
-          :id="item.id"
-          @click="characterClick(item.id)"
-          @mouseover="characterMouseEnter(item.id)"
-          @mouseleave="characterMouseLeave"
-          ref="chome_character__main__ol"
-        >
-          <img class="" :src="item.label" alt="" />
-          <div class="fill" v-show="roleTrue[item.id] || hoverRoleId === item.id"></div>
+        <div class="chome-character__main__ol fiee"
+             v-for="item in role"
+             :key="item.id"
+             :id="item.id"
+             @click="characterClick(item.id)"
+             @mouseover="characterMouseEnter(item.id)"
+             @mouseleave="characterMouseLeave"
+             ref="chome_character__main__ol">
+          <img class=""
+               :src="item.label"
+               alt="" />
+          <div class="fill"
+               v-show="roleTrue[item.id] || hoverRoleId === item.id"></div>
         </div>
       </div>
     </div>
   </div>
   <div class="home-character__swiper fill">
     <div class="swiper-wrapper fill">
-      <div
-        class="swiper-wrapper__item fill"
-        v-for="item in role"
-        :key="item.id"
-        :id="`figure-${item.id}`"
-      >
+      <div class="swiper-wrapper__item fill"
+           v-for="item in role"
+           :key="item.id"
+           :id="`figure-${item.id}`">
         <div class="swiper-wrapper__figure fill">
-          <img :src="item.role" alt="" />
+          <img :src="item.role"
+               alt="" />
         </div>
         <div class="swiper-wrapper__item__organization fill">
-          <img :src="item.img" alt="" />
+          <img :src="item.img"
+               alt="" />
         </div>
         <div class="swiper-wrapper__item__characters fill font-hongmeng">
           <div>
@@ -395,8 +398,8 @@ onMounted(() => {
   font-weight: bold;
   overflow: hidden;
   z-index: 1;
-  top: -5rem;
-  left: -5rem;
+  top: -4.5rem;
+  left: -5.3rem;
   color: rgba(239, 239, 239, 0.1);
 }
 .chome-character__main__ul {

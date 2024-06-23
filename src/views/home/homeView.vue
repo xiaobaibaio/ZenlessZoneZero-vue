@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <!-- 导航栏 -->
-
     <div>
       <!-- 固钉 -->
       <section class="fill"
@@ -13,61 +11,65 @@
                id="affix-1">
         <Section></Section>
       </section>
-      <!-- 人物列表 -->
-      <section class="home-character"
-               id="affix-2">
-        <slideshow>
-          <template v-slot:introduce>
-            <introduceView :introduceList="introduceList"
-                           :id="2"></introduceView>
-          </template>
-          <template v-slot:moreBut>
-            <moreBut></moreBut>
-          </template>
-          <template v-slot:figureSwiper>
-            <figureSwiper></figureSwiper>
-          </template>
-        </slideshow>
-      </section>
-      <!-- 新闻列表 -->
-      <section class="newsInformation Zindex"
-               id="affix-3">
-        <newsInformation>
-          <template v-slot:introduce>
-            <introduceView :introduceList="introduceList"
-                           :id="3"></introduceView>
-          </template>
-          <template v-slot:journalismSwiper>
-            <journalismSwiper></journalismSwiper>
-          </template>
-        </newsInformation>
-      </section>
-      <!-- 游戏特色 -->
-      <section class="home-character absolute_top"
-               id="affix-4">
-        <slideshow class="absolute_top">
-          <template v-slot:introduce>
-            <introduceView :introduceList="introduceList"
-                           :id="4"></introduceView>
-          </template>
-          <template v-slot:moreBut>
-            <featureSwiper></featureSwiper>
-          </template>
-        </slideshow>
-      </section>
-      <!-- 设定档案 -->
-      <section class="newsInformation absolute_top"
-               id="affix-5">
-        <newsInformation>
-          <template v-slot:introduce>
-            <introduceView :introduceList="introduceList"
-                           :id="5"></introduceView>
-          </template>
-          <template v-slot:recordView>
-            <recordView></recordView>
-          </template>
-        </newsInformation>
-      </section>
+      <div class="fill_background fiee">
+        <!-- 人物列表 -->
+        <section class="home-character"
+                 id="affix-2">
+          <slideshow>
+            <template v-slot:introduce>
+              <introduceView :introduceList="introduceList"
+                             :id="2"></introduceView>
+            </template>
+            <template v-slot:moreBut>
+              <moreBut></moreBut>
+            </template>
+            <template v-slot:figureSwiper>
+              <figureSwiper></figureSwiper>
+            </template>
+          </slideshow>
+        </section>
+        <!-- 新闻列表 -->
+        <section class="newsInformation Zindex"
+                 id="affix-3">
+          <newsInformation>
+            <template v-slot:introduce>
+              <introduceView :introduceList="introduceList"
+                             :id="3"></introduceView>
+            </template>
+            <template v-slot:journalismSwiper>
+              <journalismSwiper></journalismSwiper>
+            </template>
+          </newsInformation>
+        </section>
+      </div>
+      <div class="fill_background fiee hierarchy">
+        <!-- 游戏特色 -->
+        <section class="home-character absolute_top"
+                 id="affix-4">
+          <slideshow class="absolute_top">
+            <template v-slot:introduce>
+              <introduceView :introduceList="introduceList"
+                             :id="4"></introduceView>
+            </template>
+            <template v-slot:moreBut>
+              <featureSwiper></featureSwiper>
+            </template>
+          </slideshow>
+        </section>
+        <!-- 设定档案 -->
+        <section class="newsInformation absolute_top"
+                 id="affix-5">
+          <newsInformation>
+            <template v-slot:introduce>
+              <introduceView :introduceList="introduceList"
+                             :id="5"></introduceView>
+            </template>
+            <template v-slot:recordView>
+              <recordView></recordView>
+            </template>
+          </newsInformation>
+        </section>
+      </div>
     </div>
 
   </div>
@@ -128,17 +130,30 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.hierarchy {
+  padding-top: -1rem;
+}
+.fill_background {
+  width: 25.62rem;
+  height: 23rem;
+  margin-top: 2rem;
+  left: -0.01rem;
+  background-image: url('../../assets/人物/边/fill-black-short.af5371b.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100.1%;
+  display: block;
+}
+
 .home {
   width: 100vw;
+  height: 100%;
   overflow-block: scroll;
+  // overflow: scroll;
   section {
     position: relative;
   }
   .Zindex {
     z-index: 4;
-  }
-  .absolute_top {
-    top: 2rem;
   }
   .home-section {
     width: 100vw;
@@ -154,6 +169,5 @@ onUnmounted(() => {
     height: auto;
     margin-top: 14.4rem;
   }
-
 }
 </style>
