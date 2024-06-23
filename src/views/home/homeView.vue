@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <!-- 导航栏 -->
-    <div>
-      <navView></navView>
-    </div>
+
     <div>
       <!-- 固钉 -->
       <section class="fill"
@@ -71,17 +69,13 @@
         </newsInformation>
       </section>
     </div>
-    <!-- 页脚 -->
-    <div class="page_footer fiee">
-      <pageFooter></pageFooter>
-    </div>
+
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import navView from '@/components/navView.vue'
-import pageFooter from '@/components/pageFooter.vue'
+
 import Affix from '@/views/home/components/homeAffix.vue'
 import Section from '@/views/home/components/homeSection.vue'
 import slideshow from '@/views/home/components/slideshowView.vue'
@@ -160,9 +154,6 @@ onUnmounted(() => {
     height: auto;
     margin-top: 14.4rem;
   }
-  .page_footer {
-    top: 4.27rem;
-    background: #111;
-  }
+
 }
 </style>

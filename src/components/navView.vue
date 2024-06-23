@@ -6,28 +6,43 @@
       </div>
       <div class="list">
         <ul class="list_ul">
-          <li class="list" v-for="itme in list" :key="itme">{{ itme.name }}</li>
+          <router-link :to="`/${item.url}`"
+                       v-for="item in list"
+                       :key="item">
+            <li class="list">
+              {{ item.name }}
+            </li>
+          </router-link>
         </ul>
         <div class="press">
-          <div class="m-audio-player" @click="audio_player">
-            <img v-show="audio_pause" src="../assets/视频号/下载 (8).png" alt="" />
-            <img v-show="audio_play" src="../assets/视频号/下载 (9).png" alt="" />
-            <audio ref="audio_welcome" autoplay="autoplay">
+          <div class="m-audio-player"
+               @click="audio_player">
+            <img v-show="audio_pause"
+                 src="../assets/视频号/下载 (8).png"
+                 alt="" />
+            <img v-show="audio_play"
+                 src="../assets/视频号/下载 (9).png"
+                 alt="" />
+            <audio ref="audio_welcome"
+                   autoplay="autoplay">
               <!-- <source src="../assets/《绝区零》官方网站 —— 世界全剧终，欢迎来到新艾利都！.mp3" /> -->
             </audio>
           </div>
-          <div
-            class="m-audio-player m-share__panel"
-            @mouseenter="share__panel = true"
-            @mouseleave="share__panel = false"
-          >
-            <img src="../assets/视频号/下载 (3).png" alt="" />
-            <div class="share__panel" v-show="share__panel">
+          <div class="m-audio-player m-share__panel"
+               @mouseenter="share__panel = true"
+               @mouseleave="share__panel = false">
+            <img src="../assets/视频号/下载 (3).png"
+                 alt="" />
+            <div class="share__panel"
+                 v-show="share__panel">
               <div>
                 <span>关注我们</span>
                 <ul class="img_ul">
-                  <li v-for="item in followUs" :key="item.id">
-                    <a href="" @mouseenter="hoveredId = item.id" @mouseleave="hoveredId = null">
+                  <li v-for="item in followUs"
+                      :key="item.id">
+                    <a href=""
+                       @mouseenter="hoveredId = item.id"
+                       @mouseleave="hoveredId = null">
                       <img :src="hoveredId === item.id ? item.img : item.imgs" />
                     </a>
                   </li>
@@ -35,7 +50,8 @@
               </div>
             </div>
           </div>
-          <div class="m-audio-player"><img src="../assets/视频号/下载 (15).png" alt="" /></div>
+          <div class="m-audio-player"><img src="../assets/视频号/下载 (15).png"
+                 alt="" /></div>
         </div>
       </div>
     </div>
@@ -45,10 +61,10 @@
 <script setup>
 import { ref } from 'vue'
 const list = ref([
-  { name: '首页' },
-  { name: '角色介绍' },
-  { name: '新闻资讯' },
-  { name: '设定档案' }
+  { name: '首页', url: 'Main' },
+  { name: '角色介绍', url: 'Character' },
+  { name: '新闻资讯', url: 'News' },
+  { name: '设定档案', url: 'World' }
 ])
 const followUs = ref([
   { id: 1, img: '/src/assets/视频号/wx.png', imgs: '/src/assets/视频号/wx-1.png' },
@@ -111,6 +127,7 @@ const hoveredId = ref(null)
         font-size: 0.2rem;
         font-weight: bold;
         color: #787878;
+
         li {
           width: 1.24rem;
           height: 0.44rem;
