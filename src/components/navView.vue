@@ -6,10 +6,14 @@
       </div>
       <div class="list">
         <ul class="list_ul">
+          <router-link to="/Main">
+            <li class="list">首页</li>
+          </router-link>
           <router-link :to="`/${item.url}`"
                        v-for="item in list"
                        :key="item">
-            <li class="list">
+            <li class="list"
+                :class="{list_item : isListItem === `/${item.url}`}">
               {{ item.name }}
             </li>
           </router-link>
@@ -25,7 +29,7 @@
                  alt="" />
             <audio ref="audio_welcome"
                    autoplay="autoplay">
-              <!-- <source src="../assets/《绝区零》官方网站 —— 世界全剧终，欢迎来到新艾利都！.mp3" /> -->
+              <source src="../assets/《绝区零》官方网站 —— 世界全剧终，欢迎来到新艾利都！.mp3" />
             </audio>
           </div>
           <div class="m-audio-player m-share__panel"
@@ -59,9 +63,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router';
+
 const list = ref([
-  { name: '首页', url: 'Main' },
+  // { name: '首页', url: 'Main' },
   { name: '角色介绍', url: 'Character' },
   { name: '新闻资讯', url: 'News' },
   { name: '设定档案', url: 'World' }
@@ -85,9 +91,24 @@ const audio_player = () => {
 
 const share__panel = ref(false)
 const hoveredId = ref(null)
+
+//获取路由，将路由path值存入isListItem
+const route = useRoute();
+const isListItem = ref(route.path);
+
+//监听route变化
+watch(route, (newRoute) => {
+  isListItem.value = newRoute.path;
+}, { immediate: true, deep: true });  
 </script>
 
 <style lang="scss" scoped>
+.list_item {
+  background: #fff;
+  border-radius: 25px;
+  color: #000;
+  transform: scale(1.12);
+}
 .nav {
   position: fixed;
   z-index: 1000001;
@@ -127,7 +148,6 @@ const hoveredId = ref(null)
         font-size: 0.2rem;
         font-weight: bold;
         color: #787878;
-
         li {
           width: 1.24rem;
           height: 0.44rem;

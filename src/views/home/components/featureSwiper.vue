@@ -174,12 +174,12 @@ onMounted(() => {
   div {
     width: 0.84rem;
     height: 0.6rem;
-    background-image: url('/src/assets/轮播图2/下载 (7).png');
+    background-image: url('/src/assets/下载 (7).png');
     background-size: 100% 100%;
     transition: background-color 0.3s ease;
   }
   div:hover {
-    background-image: url('/src/assets/轮播图2/下载 (11).png');
+    background-image: url('/src/assets/下载 (11).png');
   }
   .home_feature_but_small_right {
     transform: rotate(180deg);
